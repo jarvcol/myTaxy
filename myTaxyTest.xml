@@ -1,0 +1,13 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="MyTaxyTest" verbose ="5" parallel="methods" thread-count="10">
+
+    <listeners>
+        <listener class-name="test.utils.ExtentReportListener"></listener>
+    </listeners>
+
+    <test name="PostAppTest">
+        <classes>
+            <class name="test.testClasses.FirstTest"></class>
+        </classes>
+    </test>
+</suite>
