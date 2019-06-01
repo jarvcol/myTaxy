@@ -45,6 +45,10 @@ public abstract class BaseApi {
         return expectedStatusCode;
     }
 
+    public int getResponseStatusCode() {
+        return apiResponse.getStatusCode();
+    }
+
     public void setExpectedStatusCode(int expectedStatusCode) {
         this.expectedStatusCode = expectedStatusCode;
     }

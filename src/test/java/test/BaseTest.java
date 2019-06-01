@@ -18,5 +18,7 @@ public class BaseTest {
 
         baseUri = PropertiesManager.getProperty("baseURI");
         logger.info("Based URI = " + baseUri);
+
     }
+
 }
