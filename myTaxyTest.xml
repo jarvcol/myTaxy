@@ -7,7 +7,8 @@
 
     <test name="PostAppTest">
         <classes>
-            <class name="test.testClasses.FirstTest"></class>
+            <class name="test.testClasses.UsersTest"></class>
+            <class name="test.testClasses.PostsTest"></class>
         </classes>
     </test>
 </suite>

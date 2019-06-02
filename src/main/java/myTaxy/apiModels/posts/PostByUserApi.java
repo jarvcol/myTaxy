@@ -21,7 +21,7 @@ public class PostByUserApi extends BaseApi {
     protected void createRequest() {
         requestSpecBuilder.setBaseUri(baseUri);
         requestSpecBuilder.setBasePath(resource);
-        requestSpecBuilder.addPathParam("userId",userId);
+        requestSpecBuilder.addQueryParam("userId",userId);
         requestSpecification=requestSpecBuilder.build();
     }
 
@@ -45,6 +45,5 @@ public class PostByUserApi extends BaseApi {
                 "at="+ baseUri +'\'' +
                 '}';
     }
-
 
 }

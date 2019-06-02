@@ -29,18 +29,6 @@ public abstract class BaseApi {
         return apiResponse;
     }
 
-    public String getApiResponseAsString() {
-        return apiResponse.asString();
-    }
-
-    public JSONObject getApiResponseAsJsonObject() {
-        return new JSONObject(apiResponse.asString());
-    }
-
-    public JSONArray getApiResponseAsJsonArray() {
-        return new JSONArray(apiResponse.asString());
-    }
-
     protected int getExpectedStatusCode() {
         return expectedStatusCode;
     }
