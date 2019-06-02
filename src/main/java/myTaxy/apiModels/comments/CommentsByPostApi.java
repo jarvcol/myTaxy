@@ -3,13 +3,13 @@ package myTaxy.apiModels.comments;
 import myTaxy.apiModels.BaseApi;
 import static io.restassured.RestAssured.given;
 
-public class CommentsByPost extends BaseApi {
+public class CommentsByPostApi extends BaseApi {
 
     private final String resource="/comments?postId={postId}";
     private final String type="get";
     private int postId;
 
-    public CommentsByPost(String baseUri) {
+    public CommentsByPostApi(String baseUri) {
         super(baseUri);
     }
 

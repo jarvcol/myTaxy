@@ -3,8 +3,7 @@ package test.testClasses;
 import test.BaseTest;
 import org.testng.annotations.Test;
 import org.testng.Assert;
-import test.testData.BaseClient;
-import test.testData.PostByUserClient;
+import test.clients.PostByUserClient;
 
 public class PostsTest extends BaseTest{
 

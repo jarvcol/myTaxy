@@ -1,8 +1,6 @@
-package test.testData;
+package test.clients;
 
 import myTaxy.apiModels.BaseApi;
-import myTaxy.apiModels.users.UsersApi;
-import myTaxy.apiModels.posts.PostByUserApi;
 import org.json.JSONArray;
 import org.json.JSONObject;
 

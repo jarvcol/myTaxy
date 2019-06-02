@@ -1,4 +1,4 @@
-package test.testData;
+package test.clients;
 
 import myTaxy.apiModels.posts.PostByUserApi;
 
