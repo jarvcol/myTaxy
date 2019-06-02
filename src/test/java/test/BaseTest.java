@@ -18,5 +18,16 @@ public class BaseTest {
 
         baseUri = PropertiesManager.getProperty("baseURI");
         logger.info("Based URI = " + baseUri);
+
     }
+
+    @DataProvider(name="usernames")
+    public Object[][] dataProviderExc4(){
+        return new Object[][]{
+                {"Bret", 1},
+                {"Samantha", 3},
+
+        };
+    }
+
 }
