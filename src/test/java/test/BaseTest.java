@@ -21,4 +21,13 @@ public class BaseTest {
 
     }
 
+    @DataProvider(name="usernames")
+    public Object[][] dataProviderExc4(){
+        return new Object[][]{
+                {"Bret", 1},
+                {"Samantha", 3},
+
+        };
+    }
+
 }

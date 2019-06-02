@@ -13,7 +13,7 @@ public class FirstTest extends BaseTest {
 
     @Test
     public void baseClientTest(){
-        logger.info("Executing first test" + baseUri);
+        logger.info("Executing first test " + baseUri);
         clients = new Clients(baseUri);
 
         clients.getUserApiRun(200);
@@ -22,20 +22,20 @@ public class FirstTest extends BaseTest {
         Assert.assertTrue(clients.getResponseString().length() != 0, "Users where not retrieve");
     }
 
-    @Test()
-    public void getUserIdFromUserName(){
-        logger.info("Executing " + "getUserIdFromName" + "URI" + baseUri);
+    @Test(dataProvider = "usernames")
+    public void getUserIdFromUserName(String userName, int expectedId){
+        logger.info("Executing " + "getUserIdFromName " + "URI " + baseUri);
         clients = new Clients(baseUri);
 
         clients.getUserApiRun(200);
 
-        logger.info("Response Code" + clients.getResponseStatusCode());
+        logger.info("Response Code " + clients.getResponseStatusCode());
         logger.info("Client class " +clients.toString());
 
-        int userIdOnResponse = JsonUtilities.getUserIdByUserNameFromUserList("Samantha", clients.getResponseJsonArray());
+        int userIdOnResponse = JsonUtilities.getUserIdByUserNameFromUserList(userName, clients.getResponseJsonArray());
 
-        logger.info("User Id found" +userIdOnResponse);
+        logger.info("User Id found: " +userIdOnResponse + ", for userName "+userName);
 
-        Assert.assertEquals(3, userIdOnResponse, "Response ID is not the expected one");
+        Assert.assertEquals(userIdOnResponse, expectedId, "Response ID is not the expected one");
     }
 }
