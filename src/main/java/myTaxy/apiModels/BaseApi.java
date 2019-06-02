@@ -5,9 +5,6 @@ import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 
 public abstract class BaseApi {
 

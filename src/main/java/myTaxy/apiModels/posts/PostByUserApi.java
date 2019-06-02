@@ -18,7 +18,7 @@ public class PostByUserApi extends BaseApi {
     }
 
     @Override
-    protected void createRequest() {
+    public void createRequest() {
         requestSpecBuilder.setBaseUri(baseUri);
         requestSpecBuilder.setBasePath(resource);
         requestSpecBuilder.addQueryParam("userId",userId);
@@ -26,12 +26,12 @@ public class PostByUserApi extends BaseApi {
     }
 
     @Override
-    protected void executeRequest() {
+    public void executeRequest() {
         apiResponse = given().spec(requestSpecification).get();
     }
 
     @Override
-    protected void validateResponse() {
+    public void validateResponse() {
         responseSpecBuilder.expectStatusCode(expectedStatusCode);
         responseSpecification=responseSpecBuilder.build();
         apiResponse.then().spec(responseSpecification);
