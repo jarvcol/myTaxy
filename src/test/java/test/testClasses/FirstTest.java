@@ -4,37 +4,35 @@ import test.BaseTest;
 import myTaxy.apiModels.users.UsersApi;
 import org.testng.annotations.Test;
 import org.testng.Assert;
+import test.testData.Clients;
 import test.utils.JsonUtilities;
 
 public class FirstTest extends BaseTest {
 
-    private UsersApi getUsersApi;
+    private Clients clients;
 
     @Test
     public void baseClientTest(){
         logger.info("Executing first test" + baseUri);
-        getUsersApi = new UsersApi(baseUri);
+        clients = new Clients(baseUri);
 
-        getUsersApi.setExpectedStatusCode(200);
+        clients.getUserApiRun(200);
+        logger.info("Executing first test");
 
-        logger.info("Executing first test" + getUsersApi.toString());
-
-        getUsersApi.perform();
-
-        Assert.assertTrue(getUsersApi.getApiResponseAsString().length() != 0, "Users where not retrieve");
+        Assert.assertTrue(clients.getResponseString().length() != 0, "Users where not retrieve");
     }
 
     @Test()
     public void getUserIdFromUserName(){
         logger.info("Executing " + "getUserIdFromName" + "URI" + baseUri);
-        getUsersApi = new UsersApi(baseUri);
+        clients = new Clients(baseUri);
 
-        getUsersApi.setExpectedStatusCode(200);
-        getUsersApi.perform();
+        clients.getUserApiRun(200);
 
-        logger.info("Response Code" + getUsersApi.getResponseStatusCode());
+        logger.info("Response Code" + clients.getResponseStatusCode());
+        logger.info("Client class " +clients.toString());
 
-        int userIdOnResponse = JsonUtilities.getUserIdByUserNameFromUserList("Samantha", getUsersApi.getApiResponseAsJsonArray());
+        int userIdOnResponse = JsonUtilities.getUserIdByUserNameFromUserList("Samantha", clients.getResponseJsonArray());
 
         logger.info("User Id found" +userIdOnResponse);
 
