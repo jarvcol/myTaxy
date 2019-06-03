@@ -21,7 +21,7 @@ public class UsersTest extends BaseTest {
         logger.info("Response Code " + client.getResponseStatusCode());
         logger.info("Client class " +client.toString());
 
-        int userIdOnResponse = JsonUtilities.getUserIdByUserNameFromUserList(userName, client.getApiResponseAsJsonArray());
+        int userIdOnResponse = client.getUserIdByUserNameFromUserList(userName);
 
         logger.info("User Id found: " +userIdOnResponse + ", for userName "+userName);
 
