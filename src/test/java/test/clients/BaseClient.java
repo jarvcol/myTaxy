@@ -3,6 +3,7 @@ package test.clients;
 import myTaxy.apiModels.BaseApi;
 import org.json.JSONArray;
 import org.json.JSONObject;
+import test.utils.JsonUtilities;
 
 public abstract class BaseClient {
 
@@ -22,11 +23,11 @@ public abstract class BaseClient {
     }
 
     public JSONObject getApiResponseAsJsonObject() {
-        return new JSONObject(apiClient.getApiResponse().asString());
+        return new JSONObject(this.getApiResponseAsString());
     }
 
     public JSONArray getApiResponseAsJsonArray() {
-        return new JSONArray(apiClient.getApiResponse().asString());
+        return new JSONArray(this.getApiResponseAsString());
     }
 
     public int getResponseStatusCode(){

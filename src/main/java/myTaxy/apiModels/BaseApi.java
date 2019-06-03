@@ -26,10 +26,6 @@ public abstract class BaseApi {
         return apiResponse;
     }
 
-    protected int getExpectedStatusCode() {
-        return expectedStatusCode;
-    }
-
     public int getResponseStatusCode() {
         return apiResponse.getStatusCode();
     }

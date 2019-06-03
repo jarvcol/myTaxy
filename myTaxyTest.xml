@@ -9,8 +9,8 @@
 
     <test name="PostAppTest">
         <classes>
-            <!--<class name="test.testClasses.UsersTest"></class>
-            <class name="test.testClasses.PostsTest"></class>-->
+            <class name="test.testClasses.UsersTest"></class>
+            <class name="test.testClasses.PostsTest"></class>
             <class name="test.testClasses.CommentsTest"></class>
         </classes>
     </test>

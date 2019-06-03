@@ -8,10 +8,6 @@ import java.util.*;
 
 public class JsonUtilities {
 
-    public static int getUserIdByUserNameFromUserList(String userName, JSONArray userList){
-        return getObjectFromListByParameter("username", userName, userList).getInt("id");
-    }
-
     public static List<Integer> getListOfIntegerValuesFromList(String parameterName, JSONArray objectList){
         List<Integer> intList = new ArrayList<Integer>();
         for (int i = 0; i < objectList.length(); i++){
@@ -28,7 +24,7 @@ public class JsonUtilities {
         return stringlist;
     }
 
-    private static JSONObject getObjectFromListByParameter(String parameterName, String parameterValue, JSONArray userList){
+    public static JSONObject getObjectFromListByParameter(String parameterName, String parameterValue, JSONArray userList){
         for (int i = 0; i < userList.length(); i++){
             if(compareObjectByParameter(parameterName, parameterValue, userList.getJSONObject(i)))
                 return userList.getJSONObject(i);

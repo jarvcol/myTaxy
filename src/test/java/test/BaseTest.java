@@ -63,7 +63,7 @@ public class BaseTest {
         apiClient.getApiRun();
 
         return new Object[][]{
-                {"Samantha", JsonUtilities.getUserIdByUserNameFromUserList(userName, apiClient.getApiResponseAsJsonArray()), 10}
+                {"Samantha", ((UsersClient)apiClient).getUserIdByUserNameFromUserList(userName), 10}
         };
     }
 
@@ -75,7 +75,7 @@ public class BaseTest {
         apiClient.setExpectedResponseCode(200);
         apiClient.getApiRun();
 
-        int userId = JsonUtilities.getUserIdByUserNameFromUserList(userName, apiClient.getApiResponseAsJsonArray());
+        int userId = ((UsersClient)apiClient).getUserIdByUserNameFromUserList(userName);
 
         apiClient = new PostByUserClient(baseUri);
         apiClient.setExpectedResponseCode(200);
@@ -83,7 +83,7 @@ public class BaseTest {
         apiClient.getApiRun();
 
         return new Object[][]{
-                {apiClient.getApiResponseAsJsonArray().getJSONObject(0).getInt("id"), 5}
+                {((PostByUserClient)apiClient).getListOfPostId().get(0), 5}
         };
     }
 
@@ -95,7 +95,7 @@ public class BaseTest {
         apiClient.setExpectedResponseCode(200);
         apiClient.getApiRun();
 
-        int userId = JsonUtilities.getUserIdByUserNameFromUserList(userName, apiClient.getApiResponseAsJsonArray());
+        int userId = ((UsersClient)apiClient).getUserIdByUserNameFromUserList(userName);
 
         apiClient = new PostByUserClient(baseUri);
         apiClient.setExpectedResponseCode(200);

@@ -1,6 +1,7 @@
 package test.clients;
 
 import myTaxy.apiModels.users.UsersApi;
+import test.utils.JsonUtilities;
 
 public class UsersClient extends BaseClient{
 
@@ -18,5 +19,9 @@ public class UsersClient extends BaseClient{
     @Override
     public String toString() {
         return "Client for API: "+((UsersApi) apiClient).toString();
+    }
+
+    public int getUserIdByUserNameFromUserList(String userName){
+        return JsonUtilities.getObjectFromListByParameter("username", userName, this.getApiResponseAsJsonArray()).getInt("id");
     }
 }

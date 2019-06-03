@@ -1,6 +1,9 @@
 package test.clients;
 
 import myTaxy.apiModels.posts.PostByUserApi;
+import test.utils.JsonUtilities;
+
+import java.util.List;
 
 public class PostByUserClient extends BaseClient{
 
@@ -25,5 +28,9 @@ public class PostByUserClient extends BaseClient{
     @Override
     public String toString() {
         return "Client for API: "+((PostByUserApi) apiClient).toString();
+    }
+
+    public List<Integer> getListOfPostId(){
+        return JsonUtilities.getListOfIntegerValuesFromList("id", this.getApiResponseAsJsonArray());
     }
 }
