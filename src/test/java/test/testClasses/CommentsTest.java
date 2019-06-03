@@ -1,7 +1,7 @@
 package test.testClasses;
 
-import myTaxy.apiModels.comments.CommentsByPostApi;
 import org.testng.Assert;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import test.BaseTest;
 import test.clients.CommentsByPostIdClient;
@@ -9,6 +9,11 @@ import test.clients.CommentsByPostIdClient;
 public class CommentsTest extends BaseTest {
 
     private CommentsByPostIdClient client;
+
+    @Parameters({ "userName" })
+    public CommentsTest(String username){
+        super(username);
+    }
 
     @Test(dataProvider = "postId")
     public void getCommentsByPostId(int postId, int expectedCommentstAmount){
