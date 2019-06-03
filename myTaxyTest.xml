@@ -1,14 +1,17 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="MyTaxyTest" verbose ="5" parallel="methods" thread-count="10">
+<suite name="MyTaxyTest" verbose ="5" parallel="methods" thread-count="4">
 
     <listeners>
         <listener class-name="test.utils.ExtentReportListener"></listener>
     </listeners>
 
+    <parameter name="userName"  value="Samantha"/>
+
     <test name="PostAppTest">
         <classes>
             <class name="test.testClasses.UsersTest"></class>
             <class name="test.testClasses.PostsTest"></class>
+            <class name="test.testClasses.CommentsTest"></class>
         </classes>
     </test>
 </suite>
