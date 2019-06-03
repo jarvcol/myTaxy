@@ -1,18 +1,18 @@
 package test;
 
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.testng.annotations.*;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
 import test.clients.BaseClient;
+import test.clients.CommentsByPostIdClient;
 import test.clients.PostByUserClient;
 import test.clients.UsersClient;
 import test.utils.JsonUtilities;
 import test.utils.PropertiesManager;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Iterator;
+import java.util.*;
 
 public class BaseTest {
 
@@ -87,7 +87,7 @@ public class BaseTest {
         };
     }
 
-    @DataProvider(name="userCommentsOnPosts")
+    @DataProvider(name="commentsOnUsersPosts")
     public Iterator<Object[]> getCommentsOnUserPosts(){
         String userName = username;
 
@@ -102,10 +102,18 @@ public class BaseTest {
         ((PostByUserClient)apiClient).setUserId(userId);
         apiClient.getApiRun();
 
-        JSONArray postByUser = apiClient.getApiResponseAsJsonArray();
+        List<Integer> postsByUser = ((PostByUserClient)apiClient).getListOfPostId();
 
-        Collection<Object[]> listOfPostId = new ArrayList<Object[]>();
-        JsonUtilities.getListOfIntegerValuesFromList("id", postByUser).forEach(item -> listOfPostId.add(new Object[]{item}));
-        return listOfPostId.iterator();
+        apiClient = new CommentsByPostIdClient(baseUri);
+        apiClient.setExpectedResponseCode(200);
+        List<Integer> commentsIdOnAllPost = new ArrayList<Integer>();
+
+        for (Integer postId: postsByUser) {
+            ((CommentsByPostIdClient)apiClient).setPostId(postId);
+            apiClient.getApiRun();
+            commentsIdOnAllPost.addAll(((CommentsByPostIdClient)apiClient).getListOfCommentsId());
+        }
+
+        return JsonUtilities.getIterableFromList(commentsIdOnAllPost).iterator();
     }
 }

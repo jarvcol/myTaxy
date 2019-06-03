@@ -34,7 +34,7 @@ public class CommentsTest extends BaseTest {
         Assert.assertEquals(commentsAmount, expectedCommentstAmount, "Amount of comments found is not the expected");
     }
 
-    @Test(dataProvider = "userCommentsOnPosts")
+    @Test(dataProvider = "commentsOnUsersPosts")
     public void checkEmailFormat(int commentId){
         logger.info("Executing " + "checkEmailFormat " + "URI " + baseUri);
 
