@@ -2,6 +2,7 @@ package test;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
+import org.json.JSONObject;
 import org.testng.annotations.*;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -106,14 +107,14 @@ public class BaseTest {
 
         apiClient = new CommentsByPostIdClient(baseUri);
         apiClient.setExpectedResponseCode(200);
-        List<Integer> commentsIdOnAllPost = new ArrayList<Integer>();
+        List<Object> commentsOnAllPost = new ArrayList<Object>();
 
         for (Integer postId: postsByUser) {
             ((CommentsByPostIdClient)apiClient).setPostId(postId);
             apiClient.getApiRun();
-            commentsIdOnAllPost.addAll(((CommentsByPostIdClient)apiClient).getListOfCommentsId());
+            commentsOnAllPost.addAll(apiClient.getApiResponseAsJsonArray().toList());
         }
 
-        return JsonUtilities.getIterableFromList(commentsIdOnAllPost).iterator();
+        return JsonUtilities.getIterableFromList(commentsOnAllPost).iterator();
     }
 }

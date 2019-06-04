@@ -15,7 +15,7 @@ public class CommentsTest extends BaseTest {
         super(username);
     }
 
-    @Test(dataProvider = "postId")
+    /*@Test(dataProvider = "postId")
     public void getCommentsByPostId(int postId, int expectedCommentstAmount){
         logger.info("Executing " + "getCommentsByPostId " + "URI " + baseUri);
         client = new CommentsByPostIdClient(baseUri);
@@ -32,14 +32,14 @@ public class CommentsTest extends BaseTest {
         logger.info("Comments done by users: " +commentsAmount + ", for Post Id "+postId);
 
         Assert.assertEquals(commentsAmount, expectedCommentstAmount, "Amount of comments found is not the expected");
-    }
+    }*/
 
     @Test(dataProvider = "commentsOnUsersPosts")
-    public void checkEmailFormat(int commentId){
+    public void checkEmailFormat(Object comment){
         logger.info("Executing " + "checkEmailFormat " + "URI " + baseUri);
+        logger.info("Comment id " + comment.toString());
 
-        logger.info("Comment id " + commentId);
-        Assert.assertTrue(true);
+
     }
 
 }
