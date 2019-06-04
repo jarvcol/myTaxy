@@ -18,6 +18,10 @@ public abstract class BaseClient {
 
     public abstract void getApiRun();
 
+    public void resetRequest(){
+        apiClient.resetRequest();
+    }
+
     public String getApiResponseAsString() {
         return apiClient.getApiResponse().asString();
     }

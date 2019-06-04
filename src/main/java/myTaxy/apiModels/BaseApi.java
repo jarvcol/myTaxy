@@ -38,6 +38,14 @@ public abstract class BaseApi {
     protected abstract void executeRequest();
     protected abstract void validateResponse();
 
+    public void resetRequest(){
+        requestSpecBuilder = new RequestSpecBuilder();
+    };
+
+    public void setBaseUri(String baseUri) {
+        this.baseUri = baseUri;
+    }
+
     public void perform(){
         createRequest();
         executeRequest();

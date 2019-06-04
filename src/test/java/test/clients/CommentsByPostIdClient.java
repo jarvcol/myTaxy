@@ -1,6 +1,10 @@
 package test.clients;
 
 import myTaxy.apiModels.comments.CommentsByPostApi;
+import org.json.JSONObject;
+import test.utils.JsonUtilities;
+
+import java.util.List;
 
 public class CommentsByPostIdClient extends BaseClient {
 
@@ -25,5 +29,9 @@ public class CommentsByPostIdClient extends BaseClient {
     @Override
     public String toString() {
         return "Client for API: "+((CommentsByPostApi) apiClient).toString();
+    }
+
+    public List<Integer> getListOfCommentsId(){
+        return JsonUtilities.getListOfIntegerValuesFromList("id", this.getApiResponseAsJsonArray());
     }
 }

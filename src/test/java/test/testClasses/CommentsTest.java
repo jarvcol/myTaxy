@@ -5,6 +5,9 @@ import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import test.BaseTest;
 import test.clients.CommentsByPostIdClient;
+import test.utils.VerificationMethods;
+
+import java.util.HashMap;
 
 public class CommentsTest extends BaseTest {
 
@@ -34,12 +37,13 @@ public class CommentsTest extends BaseTest {
         Assert.assertEquals(commentsAmount, expectedCommentstAmount, "Amount of comments found is not the expected");
     }
 
-    @Test(dataProvider = "userCommentsOnPosts")
-    public void checkEmailFormat(int commentId){
+    @Test(dataProvider = "commentsOnUsersPosts")
+    public void checkEmailFormat(Object comment){
         logger.info("Executing " + "checkEmailFormat " + "URI " + baseUri);
+        logger.info("Comment id " + ((HashMap) comment).get("id").toString());
 
-        logger.info("Comment id " + commentId);
-        Assert.assertTrue(true);
+        logger.info("Checking email format " + ((HashMap) comment).get("email"));
+        Assert.assertTrue(VerificationMethods.checkEmailFormat((((HashMap) comment).get("email")).toString()));
     }
 
 }

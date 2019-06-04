@@ -1,5 +1,6 @@
 package test.utils;
 
+import com.sun.codemodel.internal.JArray;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -30,6 +31,12 @@ public class JsonUtilities {
                 return userList.getJSONObject(i);
         }
         return null;
+    }
+
+    public static Collection<Object[]> getIterableFromList(List list){
+        Collection<Object[]> objList = new ArrayList<Object[]>();
+        list.forEach(item -> objList.add(new Object[]{item}));
+        return objList;
     }
 
     private static boolean compareObjectByParameter(String parameterName, String parameterValue, JSONObject obj){
