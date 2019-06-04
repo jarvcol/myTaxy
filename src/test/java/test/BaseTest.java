@@ -1,8 +1,5 @@
 package test;
 
-import org.jetbrains.annotations.NotNull;
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.testng.annotations.*;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
@@ -113,6 +110,7 @@ public class BaseTest {
             ((CommentsByPostIdClient)apiClient).setPostId(postId);
             apiClient.getApiRun();
             commentsOnAllPost.addAll(apiClient.getApiResponseAsJsonArray().toList());
+            apiClient.resetRequest();
         }
 
         return JsonUtilities.getIterableFromList(commentsOnAllPost).iterator();
