@@ -1,33 +1,36 @@
 package myTaxy.apiModels.posts;
 
 import myTaxy.apiModels.BaseApi;
+import pojo.AddPostRequestBody;
+
 import static io.restassured.RestAssured.given;
 
-public class PostByUserApi extends BaseApi {
+public class AddAPostApi extends BaseApi {
 
-    private final String resource="/posts?userId={userId}";
-    private final String type="get";
-    private int userId;
+    private final String resource="/posts";
+    private final String type="post";
+    private AddPostRequestBody postRequestBody;
 
-    public PostByUserApi(String baseUri) {
+    public AddAPostApi(String baseUri) {
         super(baseUri);
     }
 
-    public void setUserId(int userId){
-        this.userId = userId;
+    public void setPostRequestBody(AddPostRequestBody postRequestBody){
+        this.postRequestBody = postRequestBody;
     }
 
     @Override
     public void createBasicRequest() {
         super.setBaseUri(baseUri);
         super.setBasePath(resource);
-        super.setQueryParamter("userId",userId);
+        super.setRequestContentType("application/json");
+        super.setPostRequestBody(postRequestBody);
         super.createRequest();
     }
 
     @Override
     public void executeRequest() {
-        apiResponse = given().spec(requestSpecification).get();
+        apiResponse = given().spec(requestSpecification).post();
     }
 
     @Override
@@ -39,7 +42,7 @@ public class PostByUserApi extends BaseApi {
 
     @Override
     public String toString() {
-        return "PostByUserApi{" +
+        return "AddAPostApi{" +
                 "type=" + type + '\'' +
                 "resource='" + resource + '\'' +
                 "at="+ baseUri +'\'' +

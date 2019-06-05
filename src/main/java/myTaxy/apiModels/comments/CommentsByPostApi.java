@@ -18,11 +18,11 @@ public class CommentsByPostApi extends BaseApi {
     }
 
     @Override
-    public void createRequest() {
-        requestSpecBuilder.setBaseUri(baseUri);
-        requestSpecBuilder.setBasePath(resource);
-        requestSpecBuilder.addQueryParam("postId",postId);
-        requestSpecification=requestSpecBuilder.build();
+    public void createBasicRequest() {
+        super.setBaseUri(baseUri);
+        super.setBasePath(resource);
+        super.setQueryParamter("postId",postId);
+        super.createRequest();
     }
 
     @Override

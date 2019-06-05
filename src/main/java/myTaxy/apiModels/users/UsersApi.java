@@ -13,10 +13,10 @@ public class UsersApi extends  BaseApi{
     }
 
     @Override
-    public void createRequest() {
-        requestSpecBuilder.setBaseUri(baseUri);
-        requestSpecBuilder.setBasePath(resource);
-        requestSpecification=requestSpecBuilder.build();
+    public void createBasicRequest() {
+        super.setBaseUri(baseUri);
+        super.setBasePath(resource);
+        super.createRequest();
     }
 
     @Override

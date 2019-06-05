@@ -1,27 +1,28 @@
 package myTaxy.apiModels.posts;
 
 import myTaxy.apiModels.BaseApi;
+
 import static io.restassured.RestAssured.given;
 
-public class PostByUserApi extends BaseApi {
+public class PostByIdApi extends BaseApi {
 
-    private final String resource="/posts?userId={userId}";
+    private final String resource="/posts/{postId}";
     private final String type="get";
-    private int userId;
+    private int postId;
 
-    public PostByUserApi(String baseUri) {
+    public PostByIdApi(String baseUri) {
         super(baseUri);
     }
 
-    public void setUserId(int userId){
-        this.userId = userId;
+    public void setPostId(int postId){
+        this.postId = postId;
     }
 
     @Override
     public void createBasicRequest() {
         super.setBaseUri(baseUri);
         super.setBasePath(resource);
-        super.setQueryParamter("userId",userId);
+        super.setPathParameter("postId",postId);
         super.createRequest();
     }
 
@@ -39,11 +40,10 @@ public class PostByUserApi extends BaseApi {
 
     @Override
     public String toString() {
-        return "PostByUserApi{" +
+        return "PostByIdApi{" +
                 "type=" + type + '\'' +
                 "resource='" + resource + '\'' +
                 "at="+ baseUri +'\'' +
                 '}';
     }
-
 }
