@@ -18,11 +18,11 @@ public class PostByUserApi extends BaseApi {
     }
 
     @Override
-    public void createRequest() {
-        requestSpecBuilder.setBaseUri(baseUri);
-        requestSpecBuilder.setBasePath(resource);
-        requestSpecBuilder.addQueryParam("userId",userId);
-        requestSpecification=requestSpecBuilder.build();
+    public void createBasicRequest() {
+        super.setBaseUri(baseUri);
+        super.setBasePath(resource);
+        super.setQueryParamter("userId",userId);
+        super.createRequest();
     }
 
     @Override

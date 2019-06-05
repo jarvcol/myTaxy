@@ -5,6 +5,7 @@ import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
+import pojo.AddPostRequestBody;
 
 public abstract class BaseApi {
 
@@ -22,33 +23,53 @@ public abstract class BaseApi {
         responseSpecBuilder=new ResponseSpecBuilder();
     }
 
-    public Response getApiResponse() {
-        return apiResponse;
-    }
-
-    public int getResponseStatusCode() {
-        return apiResponse.getStatusCode();
-    }
-
     public void setExpectedStatusCode(int expectedStatusCode) {
         this.expectedStatusCode = expectedStatusCode;
     }
-
-    protected abstract void createRequest();
-    protected abstract void executeRequest();
-    protected abstract void validateResponse();
 
     public void resetRequest(){
         requestSpecBuilder = new RequestSpecBuilder();
     };
 
     public void setBaseUri(String baseUri) {
-        this.baseUri = baseUri;
+        this.requestSpecBuilder.setBasePath(baseUri);
     }
 
+    public void setBasePath(String resource){
+        this.requestSpecBuilder.setBasePath(resource);
+    }
+
+    public void setQueryParamter(String parameterName, Object parameterValue){
+        this.requestSpecBuilder.addQueryParam(parameterName, parameterValue);
+    }
+
+    public void setPostRequestBody(Object postRequestBody){
+        requestSpecBuilder.setBody(postRequestBody);
+    }
+
+    public void setRequestContentType(String type){
+        requestSpecBuilder.setContentType(type);
+    }
+
+    public void createRequest(){
+        requestSpecification=requestSpecBuilder.build();
+    };
+
+    protected abstract void createBasicRequest();
+    protected abstract void executeRequest();
+    protected abstract void validateResponse();
+
     public void perform(){
-        createRequest();
+        createBasicRequest();
         executeRequest();
         validateResponse();
+    }
+
+    public Response getApiResponse() {
+        return apiResponse;
+    }
+
+    public int getResponseStatusCode() {
+        return apiResponse.getStatusCode();
     }
 }

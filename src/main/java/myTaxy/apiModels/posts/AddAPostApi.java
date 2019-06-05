@@ -20,12 +20,12 @@ public class AddAPostApi extends BaseApi {
     }
 
     @Override
-    public void createRequest() {
-        requestSpecBuilder.setBaseUri(baseUri);
-        requestSpecBuilder.setBasePath(resource);
-        requestSpecBuilder.setContentType("application/json");
-        requestSpecBuilder.setBody(postRequestBody);
-        requestSpecification=requestSpecBuilder.build();
+    public void createBasicRequest() {
+        super.setBaseUri(baseUri);
+        super.setBasePath(resource);
+        super.setRequestContentType("application/json");
+        super.setPostRequestBody(postRequestBody);
+        super.createRequest();
     }
 
     @Override
