@@ -5,7 +5,7 @@
         <listener class-name="test.utils.ExtentReportListener"></listener>
     </listeners>
 
-    <parameter name="baseUri"  value="http://jsonplaceholder.typicode.com/  "/>
+    <parameter name="baseUri"  value="http://jsonplaceholder.typicode.com/"/>
 
     <test name="baseUserTest">
         <classes>
