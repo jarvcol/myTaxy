@@ -1,8 +1,8 @@
 package test.testClasses;
 
+import org.apache.log4j.PropertyConfigurator;
 import org.testng.Assert;
-import org.testng.annotations.Parameters;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import test.BaseTest;
 import test.clients.CommentsByPostIdClient;
 import test.utils.VerificationMethods;
@@ -14,8 +14,9 @@ public class CommentsTest extends BaseTest {
     private CommentsByPostIdClient client;
 
     @Parameters({ "userName" })
-    public CommentsTest(String username){
-        super(username);
+    @BeforeClass(alwaysRun = true)
+    public void setUserName(String userName) throws Exception{
+        super.setUsername(userName);
     }
 
     @Test(dataProvider = "postId")
