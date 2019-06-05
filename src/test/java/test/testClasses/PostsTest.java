@@ -8,6 +8,7 @@ import org.testng.annotations.Test;
 import org.testng.Assert;
 import test.clients.AddNewPostClient;
 import test.clients.BaseClient;
+import test.clients.PostByIdClient;
 import test.clients.PostByUserClient;
 
 public class PostsTest extends BaseTest{
@@ -51,6 +52,17 @@ public class PostsTest extends BaseTest{
         logger.info("Response Code " + client.getResponseStatusCode());
         logger.info("Client class " +client.toString());
 
+        int newPostId = ((AddNewPostClient)client).getResponseStatusCode();
+
+        client = new PostByIdClient(baseUri);
+        client.setExpectedResponseCode(expectedCodeResults);
+        ((PostByIdClient)client).setPostId(newPostId);
+        client.getApiRun();
+
+        logger.info("Response Code " + client.getResponseStatusCode());
+        logger.info("Client class " +client.toString());
+
+        Assert.assertTrue(((PostByIdClient)client).setPostId(newPostId););
 
     }
 }

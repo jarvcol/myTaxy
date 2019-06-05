@@ -30,4 +30,8 @@ public class AddNewPostClient extends BaseClient {
     public String toString() {
         return "Client for API: "+((AddAPostApi) apiClient).toString();
     }
+
+    public int getNewPostId(){
+        return getApiResponseAsJsonObject().getInt("userId");
+    }
 }

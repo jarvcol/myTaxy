@@ -51,6 +51,10 @@ public abstract class BaseApi {
         requestSpecBuilder.setContentType(type);
     }
 
+    public void setPathParameter(String parameterName, Object parameterValue){
+        requestSpecBuilder.addPathParam(parameterName, parameterValue);
+    }
+
     public void createRequest(){
         requestSpecification=requestSpecBuilder.build();
     };
