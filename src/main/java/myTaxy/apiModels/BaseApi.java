@@ -32,7 +32,7 @@ public abstract class BaseApi {
     };
 
     public void setBaseUri(String baseUri) {
-        this.requestSpecBuilder.setBasePath(baseUri);
+        this.requestSpecBuilder.setBaseUri(baseUri);
     }
 
     public void setBasePath(String resource){
