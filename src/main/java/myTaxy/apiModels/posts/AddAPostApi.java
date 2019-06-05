@@ -42,7 +42,7 @@ public class AddAPostApi extends BaseApi {
 
     @Override
     public String toString() {
-        return "PostByUserApi{" +
+        return "AddAPostApi{" +
                 "type=" + type + '\'' +
                 "resource='" + resource + '\'' +
                 "at="+ baseUri +'\'' +

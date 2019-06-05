@@ -35,4 +35,9 @@ public class PostsTest extends BaseTest{
 
         Assert.assertEquals(postAmount, expectedPostAmount, "Amount of post found is not the expected");
     }
+
+    @Test(dataProvider = "postContent")
+    public void addNewPostTest(Object postContent, int expectedCodeResults){
+
+    }
 }
