@@ -13,11 +13,11 @@
         </classes>
     </test>
 
-<!--    <test name="nameDependantTest">
+    <test name="nameDependantTest">
         <parameter name="userName"  value="Samantha"/>
         <classes>
             <class name="test.testClasses.PostsTest"></class>
             <class name="test.testClasses.CommentsTest"></class>
         </classes>
-    </test>-->
+    </test>
 </suite>
