@@ -8,7 +8,6 @@ import test.clients.CommentsByPostIdClient;
 import test.clients.PostByUserClient;
 import test.clients.UsersClient;
 import test.utils.JsonUtilities;
-import test.utils.PropertiesManager;
 
 import java.util.*;
 
@@ -22,19 +21,14 @@ public class BaseTest {
     public BaseTest(){
     }
 
-    public BaseTest(String username){
-        this.username = username;
-    }
-
+    @Parameters({ "baseUri" })
     @BeforeClass(alwaysRun = true)
-    public void beforeSuite() throws Exception{
+    public void beforeMethods(String baseUri) throws Exception{
         PropertyConfigurator.configure("src/test/java/test/resources/log4j.properties");
-        PropertiesManager.initializeProperties();
         logger.info("Properties Initialized for thread "+Thread.currentThread().getId());
 
-        baseUri = PropertiesManager.getProperty("baseURI");
+        this.baseUri = baseUri;
         logger.info("Based URI = " + baseUri);
-
     }
 
     @AfterClass
@@ -42,6 +36,10 @@ public class BaseTest {
         //TODO
         //Erase all created and/or rollback any changed data
         System.out.println("After test-method. Thread id is: " + +Thread.currentThread().getId());
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @DataProvider(name="userNames")

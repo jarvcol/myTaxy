@@ -1,5 +1,7 @@
 package test.testClasses;
 
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Parameters;
 import test.BaseTest;
 import org.testng.annotations.Test;
 import org.testng.Assert;
@@ -8,6 +10,12 @@ import test.clients.PostByUserClient;
 public class PostsTest extends BaseTest{
 
     private PostByUserClient client;
+
+    @Parameters({ "userName" })
+    @BeforeClass(alwaysRun = true)
+    public void setUserName(String userName) throws Exception{
+        super.setUsername(userName);
+    }
 
     @Test(dataProvider = "usersId")
     public void getPostByUsersId(String userName, int userId, int expectedPostAmount){
