@@ -55,14 +55,14 @@ public class PostsTest extends BaseTest{
         int newPostId = ((AddNewPostClient)client).getResponseStatusCode();
 
         client = new PostByIdClient(baseUri);
-        client.setExpectedResponseCode(expectedCodeResults);
+        client.setExpectedResponseCode(200);
         ((PostByIdClient)client).setPostId(newPostId);
         client.getApiRun();
 
         logger.info("Response Code " + client.getResponseStatusCode());
         logger.info("Client class " +client.toString());
 
-        Assert.assertTrue(((PostByIdClient)client).setPostId(newPostId););
+        Assert.assertTrue(((PostByIdClient)client).checkPostUserId(postContent.getUserId()), "Post was supposed to be done but not found");
 
     }
 }
