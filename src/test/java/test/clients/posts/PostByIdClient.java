@@ -31,20 +31,4 @@ public class PostByIdClient extends BaseClient {
     public boolean checkPostUserId(int userId){
         return userId == getApiResponseAsJsonObject().getInt("userId");
     }
-
-    public int getPostId(){
-        return getApiResponseAsJsonObject().getInt("id");
-    }
-
-    public String getPostTitle(){
-        return getApiResponseAsJsonObject().getString("title");
-    }
-
-    public String getPostBody(){
-        return getApiResponseAsJsonObject().getString("body");
-    }
-
-    public int getUserId(){
-        return getApiResponseAsJsonObject().getInt("userId");
-    }
 }
