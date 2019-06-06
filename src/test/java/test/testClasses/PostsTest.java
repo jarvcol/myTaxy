@@ -52,7 +52,7 @@ public class PostsTest extends BaseTest{
         logger.info("Response Code " + client.getResponseStatusCode());
         logger.info("Client class " +client.toString());
 
-        int newPostId = ((AddNewPostClient)client).getResponseStatusCode();
+        int newPostId = client.getResponseStatusCode();
 
         client = new PostByIdClient(baseUri);
         client.setExpectedResponseCode(200);

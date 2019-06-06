@@ -27,7 +27,7 @@ public class PostByUserClient extends BaseClient{
 
     @Override
     public String toString() {
-        return "Client for API: "+((PostByUserApi) apiClient).toString();
+        return "Client for API: "+apiClient.toString();
     }
 
     public List<Integer> getListOfPostId(){

@@ -2,9 +2,6 @@ package test.clients;
 
 import myTaxy.apiModels.posts.AddAPostApi;
 import pojo.AddPostRequestBody;
-import test.utils.JsonUtilities;
-
-import java.util.List;
 
 public class AddNewPostClient extends BaseClient {
 
@@ -28,7 +25,7 @@ public class AddNewPostClient extends BaseClient {
 
     @Override
     public String toString() {
-        return "Client for API: "+((AddAPostApi) apiClient).toString();
+        return "Client for API: "+apiClient.toString();
     }
 
     public int getNewPostId(){

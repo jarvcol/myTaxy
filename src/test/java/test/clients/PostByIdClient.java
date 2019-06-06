@@ -1,10 +1,6 @@
 package test.clients;
 
 import myTaxy.apiModels.posts.PostByIdApi;
-import myTaxy.apiModels.posts.PostByUserApi;
-import test.utils.JsonUtilities;
-
-import java.util.List;
 
 public class PostByIdClient extends BaseClient{
 
@@ -28,7 +24,7 @@ public class PostByIdClient extends BaseClient{
 
     @Override
     public String toString() {
-        return "Client for API: "+((PostByIdApi) apiClient).toString();
+        return "Client for API: "+apiClient.toString();
     }
 
     public boolean checkPostUserId(int userId){

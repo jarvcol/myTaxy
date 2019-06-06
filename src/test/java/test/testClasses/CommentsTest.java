@@ -1,6 +1,5 @@
 package test.testClasses;
 
-import org.apache.log4j.PropertyConfigurator;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import test.BaseTest;
@@ -15,7 +14,7 @@ public class CommentsTest extends BaseTest {
 
     @Parameters({ "userName" })
     @BeforeClass(alwaysRun = true)
-    public void setUserName(String userName) throws Exception{
+    public void setUserName(String userName){
         super.setUsername(userName);
     }
 

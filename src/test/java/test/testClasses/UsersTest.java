@@ -4,7 +4,6 @@ import test.BaseTest;
 import org.testng.annotations.Test;
 import org.testng.Assert;
 import test.clients.UsersClient;
-import test.utils.JsonUtilities;
 
 public class UsersTest extends BaseTest {
 
