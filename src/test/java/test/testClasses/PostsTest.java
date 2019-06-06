@@ -71,7 +71,7 @@ public class PostsTest extends BaseTest{
     }
 
 
-    /*@Test(dataProvider = "postContent")
+    @Test(dataProvider = "postContent")
     public void addNewPostTest(PostRequestBody postContent, int expectedCodeResults){
         logger.info("Executing " + "addNewPostTest " + "URI " + baseUri);
         apiClient = new AddNewPostClient(baseUri);
@@ -95,5 +95,5 @@ public class PostsTest extends BaseTest{
 
         Assert.assertTrue(((PostByIdClient)apiClient).checkPostUserId(postContent.getUserId()), "Post was supposed to be done but not found");
 
-    }*/
+    }
 }
