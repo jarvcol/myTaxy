@@ -7,12 +7,17 @@ import static io.restassured.RestAssured.given;
 
 public class UpdateAPostApi extends BaseApi {
 
-    private final String resource="/posts";
+    private final String resource="/posts/{postId}";
     private final String type="PUT";
     private PostRequestBody postRequestBody;
+    private int postId;
 
     public UpdateAPostApi(String baseUri) {
         super(baseUri);
+    }
+
+    public void setPostId(int postId){
+        this.postId = postId;
     }
 
     public void setPostRequestBody(PostRequestBody postRequestBody){
@@ -24,6 +29,7 @@ public class UpdateAPostApi extends BaseApi {
         super.setBaseUri(baseUri);
         super.setBasePath(resource);
         super.setRequestContentType("application/json");
+        super.setPathParameter("postId", postId);
         super.setPostRequestBody(postRequestBody);
         super.createRequest();
     }
