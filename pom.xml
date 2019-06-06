@@ -95,6 +95,7 @@
           <artifactId>maven-surefire-plugin</artifactId>
           <version>2.22.1</version>
           <configuration>
+            <useSystemClassLoader>false</useSystemClassLoader>
             <suiteXmlFiles>
               <!-- Pass testng.xml files as argument from command line -->
               <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
