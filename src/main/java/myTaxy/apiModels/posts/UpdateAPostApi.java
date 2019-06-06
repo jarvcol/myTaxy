@@ -5,14 +5,19 @@ import pojo.PostRequestBody;
 
 import static io.restassured.RestAssured.given;
 
-public class AddAPostApi extends BaseApi {
+public class UpdateAPostApi extends BaseApi {
 
-    private final String resource="/posts";
-    private final String type="post";
+    private final String resource="/posts/{postId}";
+    private final String type="PUT";
     private PostRequestBody postRequestBody;
+    private int postId;
 
-    public AddAPostApi(String baseUri) {
+    public UpdateAPostApi(String baseUri) {
         super(baseUri);
+    }
+
+    public void setPostId(int postId){
+        this.postId = postId;
     }
 
     public void setPostRequestBody(PostRequestBody postRequestBody){
@@ -24,13 +29,14 @@ public class AddAPostApi extends BaseApi {
         super.setBaseUri(baseUri);
         super.setBasePath(resource);
         super.setRequestContentType("application/json");
+        super.setPathParameter("postId", postId);
         super.setPostRequestBody(postRequestBody);
         super.createRequest();
     }
 
     @Override
     public void executeRequest() {
-        apiResponse = given().spec(requestSpecification).post();
+        apiResponse = given().spec(requestSpecification).put();
     }
 
     @Override
@@ -42,11 +48,10 @@ public class AddAPostApi extends BaseApi {
 
     @Override
     public String toString() {
-        return "AddAPostApi{" +
+        return "UpdateAPostApi{" +
                 "type=" + type + '\'' +
                 "resource='" + resource + '\'' +
                 "at="+ baseUri +'\'' +
                 '}';
     }
-
 }

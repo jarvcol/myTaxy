@@ -5,7 +5,7 @@ import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
-import pojo.AddPostRequestBody;
+import pojo.PostRequestBody;
 
 public abstract class BaseApi {
 

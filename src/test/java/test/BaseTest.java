@@ -3,7 +3,8 @@ package test;
 import org.testng.annotations.*;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
-import pojo.AddPostRequestBody;
+import org.testng.asserts.SoftAssert;
+import pojo.PostRequestBody;
 import test.clients.BaseClient;
 import test.clients.CommentsByPostIdClient;
 import test.clients.PostByUserClient;
@@ -18,6 +19,7 @@ public class BaseTest {
     public String baseUri;
     protected BaseClient apiClient;
     private String username;
+    protected SoftAssert softAssertions;
 
     public BaseTest(){
     }
@@ -119,12 +121,20 @@ public class BaseTest {
     public Object[][] postContentGenerator(){
         //Read File, DB, etc
         return new Object[][]{
-                {new AddPostRequestBody("TestPost1","This is the test body 1", 1),201},
-                {new AddPostRequestBody("","This is the test body 2", 1),400},
-                {new AddPostRequestBody("TestPost3","", 1),400},
-                {new AddPostRequestBody("TestPost4","This is the test body 4", -1),400},
-                {new AddPostRequestBody("TestPost5","Select * From table Where 1=1", 1),400},
-                {new AddPostRequestBody("TestPost1","This is the test body 1", 1),400},
+                {new PostRequestBody("TestPost1","This is the test body 1", 1),201},
+                {new PostRequestBody("","This is the test body 2", 1),400},
+                {new PostRequestBody("TestPost3","", 1),400},
+                {new PostRequestBody("TestPost4","This is the test body 4", -1),400},
+                {new PostRequestBody("TestPost5","Select * From table Where 1=1", 1),400},
+                {new PostRequestBody("TestPost1","This is the test body 1", 1),400},
+        };
+    }
+
+    @DataProvider(name="postToUpdate")
+    public Object[][] postUpdateData(){
+        //Read File, DB, etc
+        return new Object[][]{
+                {new PostRequestBody("TestPost1","This is the test body 1", 1, 1),200},
         };
     }
 

@@ -1,14 +1,21 @@
 package pojo;
 
-public class AddPostRequestBody {
+public class PostRequestBody {
 
     private String title, body;
-    private int userId;
+    private int userId, postId;
 
-    public AddPostRequestBody(String title, String body, int userId) {
+    public PostRequestBody(String title, String body, int userId) {
         this.title = title;
         this.body = body;
         this.userId = userId;
+    }
+
+    public PostRequestBody(String title, String body, int userId, int postId) {
+        this.title = title;
+        this.body = body;
+        this.userId = userId;
+        this.postId = postId;
     }
 
     public String getTitle() {
@@ -33,5 +40,13 @@ public class AddPostRequestBody {
 
     public void setUserId(int userId) {
         this.userId = userId;
+    }
+
+    public int getPostId() {
+        return postId;
+    }
+
+    public void setPostId(int postId) {
+        this.postId = postId;
     }
 }
