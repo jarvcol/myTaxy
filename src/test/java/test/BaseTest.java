@@ -16,7 +16,7 @@ public class BaseTest {
 
     public static final Logger logger = Logger.getLogger(BaseTest.class);
     public String baseUri;
-    private BaseClient apiClient;
+    protected BaseClient apiClient;
     private String username;
 
     public BaseTest(){

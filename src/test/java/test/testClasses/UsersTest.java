@@ -7,20 +7,18 @@ import test.clients.UsersClient;
 
 public class UsersTest extends BaseTest {
 
-    private UsersClient client;
-
     @Test(dataProvider = "userNames")
     public void getUserIdFromUserName(String userName, int expectedId){
         logger.info("Executing " + "getUserIdFromName " + "URI " + baseUri);
-        client = new UsersClient(baseUri);
+        apiClient = new UsersClient(baseUri);
 
-        client.setExpectedResponseCode(200);
-        client.getApiRun();
+        apiClient.setExpectedResponseCode(200);
+        apiClient.getApiRun();
 
-        logger.info("Response Code " + client.getResponseStatusCode());
-        logger.info("Client class " +client.toString());
+        logger.info("Response Code " + apiClient.getResponseStatusCode());
+        logger.info("Client class " +apiClient.toString());
 
-        int userIdOnResponse = client.getUserIdByUserNameFromUserList(userName);
+        int userIdOnResponse = ((UsersClient)apiClient).getUserIdByUserNameFromUserList(userName);
 
         logger.info("User Id found: " +userIdOnResponse + ", for userName "+userName);
 

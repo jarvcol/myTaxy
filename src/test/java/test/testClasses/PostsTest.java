@@ -13,8 +13,6 @@ import test.clients.PostByUserClient;
 
 public class PostsTest extends BaseTest{
 
-    private BaseClient client;
-
     @Parameters({ "userName" })
     @BeforeClass(alwaysRun = true)
     public void setUserName(String userName) throws Exception{
@@ -24,16 +22,16 @@ public class PostsTest extends BaseTest{
     @Test(dataProvider = "usersId")
     public void getPostByUsersId(String userName, int userId, int expectedPostAmount){
         logger.info("Executing " + "getPostByUsersId " + "URI " + baseUri);
-        client = new PostByUserClient(baseUri);
+        apiClient = new PostByUserClient(baseUri);
 
-        client.setExpectedResponseCode(200);
-        ((PostByUserClient)client).setUserId(userId);
-        client.getApiRun();
+        apiClient.setExpectedResponseCode(200);
+        ((PostByUserClient)apiClient).setUserId(userId);
+        apiClient.getApiRun();
 
-        logger.info("Response Code " + client.getResponseStatusCode());
-        logger.info("Client class " +client.toString());
+        logger.info("Response Code " + apiClient.getResponseStatusCode());
+        logger.info("Client class " +apiClient.toString());
 
-        int postAmount = client.getApiResponseAsJsonArray().length();
+        int postAmount = apiClient.getApiResponseAsJsonArray().length();
 
         logger.info("Post done by user: " +postAmount + ", for userName "+userName);
 
@@ -43,26 +41,26 @@ public class PostsTest extends BaseTest{
     @Test(dataProvider = "postContent")
     public void addNewPostTest(AddPostRequestBody postContent, int expectedCodeResults){
         logger.info("Executing " + "addNewPostTest " + "URI " + baseUri);
-        client = new AddNewPostClient(baseUri);
+        apiClient = new AddNewPostClient(baseUri);
 
-        client.setExpectedResponseCode(expectedCodeResults);
-        ((AddNewPostClient)client).setPostObject(postContent);
-        client.getApiRun();
+        apiClient.setExpectedResponseCode(expectedCodeResults);
+        ((AddNewPostClient)apiClient).setPostObject(postContent);
+        apiClient.getApiRun();
 
-        logger.info("Response Code " + client.getResponseStatusCode());
-        logger.info("Client class " +client.toString());
+        logger.info("Response Code " + apiClient.getResponseStatusCode());
+        logger.info("Client class " +apiClient.toString());
 
-        int newPostId = client.getResponseStatusCode();
+        int newPostId = apiClient.getResponseStatusCode();
 
-        client = new PostByIdClient(baseUri);
-        client.setExpectedResponseCode(200);
-        ((PostByIdClient)client).setPostId(newPostId);
-        client.getApiRun();
+        apiClient = new PostByIdClient(baseUri);
+        apiClient.setExpectedResponseCode(200);
+        ((PostByIdClient)apiClient).setPostId(newPostId);
+        apiClient.getApiRun();
 
-        logger.info("Response Code " + client.getResponseStatusCode());
-        logger.info("Client class " +client.toString());
+        logger.info("Response Code " + apiClient.getResponseStatusCode());
+        logger.info("Client class " +apiClient.toString());
 
-        Assert.assertTrue(((PostByIdClient)client).checkPostUserId(postContent.getUserId()), "Post was supposed to be done but not found");
+        Assert.assertTrue(((PostByIdClient)apiClient).checkPostUserId(postContent.getUserId()), "Post was supposed to be done but not found");
 
     }
 }

@@ -10,8 +10,6 @@ import java.util.HashMap;
 
 public class CommentsTest extends BaseTest {
 
-    private CommentsByPostIdClient client;
-
     @Parameters({ "userName" })
     @BeforeClass(alwaysRun = true)
     public void setUserName(String userName){
@@ -21,16 +19,16 @@ public class CommentsTest extends BaseTest {
     @Test(dataProvider = "postId")
     public void getCommentsByPostId(int postId, int expectedCommentstAmount){
         logger.info("Executing " + "getCommentsByPostId " + "URI " + baseUri);
-        client = new CommentsByPostIdClient(baseUri);
+        apiClient = new CommentsByPostIdClient(baseUri);
 
-        client.setExpectedResponseCode(200);
-        client.setPostId(postId);
-        client.getApiRun();
+        apiClient.setExpectedResponseCode(200);
+        ((CommentsByPostIdClient)apiClient).setPostId(postId);
+        apiClient.getApiRun();
 
-        logger.info("Response Code " + client.getResponseStatusCode());
-        logger.info("Client class " +client.toString());
+        logger.info("Response Code " + apiClient.getResponseStatusCode());
+        logger.info("Client class " +apiClient.toString());
 
-        int commentsAmount = client.getApiResponseAsJsonArray().length();
+        int commentsAmount = apiClient.getApiResponseAsJsonArray().length();
 
         logger.info("Comments done by users: " +commentsAmount + ", for Post Id "+postId);
 
