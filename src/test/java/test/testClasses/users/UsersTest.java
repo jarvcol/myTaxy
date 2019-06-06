@@ -1,24 +1,24 @@
-package test.testClasses;
+package test.testClasses.users;
 
 import test.BaseTest;
 import org.testng.annotations.Test;
 import org.testng.Assert;
 import test.clients.users.UsersClient;
 
-public class UsersTest extends BaseTest {
+public class UsersTest extends BaseUsersTest {
 
     @Test(dataProvider = "userNames")
     public void getUserIdFromUserName(String userName, int expectedId){
         logger.info("Executing " + "getUserIdFromName " + "URI " + baseUri);
-        apiClient = new UsersClient(baseUri);
+        usersClient = new UsersClient(baseUri);
 
-        apiClient.setExpectedResponseCode(200);
-        apiClient.getApiRun();
+        usersClient.setExpectedResponseCode(200);
+        usersClient.getApiRun();
 
-        logger.info("Response Code " + apiClient.getResponseStatusCode());
-        logger.info("Client class " +apiClient.toString());
+        logger.info("Response Code " + usersClient.getResponseStatusCode());
+        logger.info("Client class " +usersClient.toString());
 
-        int userIdOnResponse = ((UsersClient)apiClient).getUserIdByUserNameFromUserList(userName);
+        int userIdOnResponse = usersClient.getUserIdByUserNameFromUserList(userName);
 
         logger.info("User Id found: " +userIdOnResponse + ", for userName "+userName);
 

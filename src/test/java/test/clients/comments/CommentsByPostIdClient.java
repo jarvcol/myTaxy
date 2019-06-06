@@ -34,4 +34,8 @@ public class CommentsByPostIdClient extends BaseClient {
     public List<Integer> getListOfCommentsId(){
         return JsonUtilities.getListOfIntegerValuesFromList("id", this.getApiResponseAsJsonArray());
     }
+
+    public int getCommentsAmount(){
+        return this.getApiResponseAsJsonArray().length();
+    }
 }

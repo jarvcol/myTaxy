@@ -3,17 +3,11 @@ package test.clients.posts;
 import myTaxy.apiModels.posts.PostByIdApi;
 import test.clients.BaseClient;
 
-public class PostByIdClient extends BaseClient {
-
-    private int postId;
+public class PostByIdClient extends BasePostClient {
 
     public PostByIdClient(String baseUri){
         super(baseUri);
         apiClient = new PostByIdApi(baseUri);
-    }
-
-    public void setPostId(int postId){
-        this.postId = postId;
     }
 
     @Override
