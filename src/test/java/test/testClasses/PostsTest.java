@@ -43,6 +43,7 @@ public class PostsTest extends BaseTest{
 
         apiClient.setExpectedResponseCode(expectedCodeResults);
         ((UpdatePostClient)apiClient).setPostObject(postContent);
+        ((UpdatePostClient)apiClient).setPostId(postContent.getPostId());
         apiClient.getApiRun();
 
         logger.info("Response Code " + apiClient.getResponseStatusCode());
@@ -59,12 +60,12 @@ public class PostsTest extends BaseTest{
         softAssertions = new SoftAssert();
 
         //Following could change and be equal to object input
-        softAssertions.assertEquals(((PostByIdClient)apiClient).getPostTitle(),postContent,"Post title did not get updated");
-        softAssertions.assertEquals(((PostByIdClient)apiClient).getPostBody(),postContent,"Post body did not get update");
+        softAssertions.assertEquals(((PostByIdClient)apiClient).getPostTitle(),postContent.getTitle(),"Post title did not get updated");
+        softAssertions.assertEquals(((PostByIdClient)apiClient).getPostBody(),postContent.getBody(),"Post body did not get update");
 
         //Assumed that following cannot change. Object input has the original values
-        softAssertions.assertEquals(((PostByIdClient)apiClient).getPostId(),postContent,"Post id should not change on update operation");
-        softAssertions.assertEquals(((PostByIdClient)apiClient).getUserId(),postContent,"User id should not change on update operation");
+        softAssertions.assertEquals(((PostByIdClient)apiClient).getPostId(),postContent.getPostId(),"Post id should not change on update operation");
+        softAssertions.assertEquals(((PostByIdClient)apiClient).getUserId(),postContent.getUserId(),"User id should not change on update operation");
 
         softAssertions.assertAll();
     }

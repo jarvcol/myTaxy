@@ -134,7 +134,7 @@ public class BaseTest {
     public Object[][] postUpdateData(){
         //Read File, DB, etc
         return new Object[][]{
-                {new PostRequestBody("TestPost1","This is the test body 1", 1, 1),201},
+                {new PostRequestBody("TestPost1","This is the test body 1", 1, 1),200},
         };
     }
 

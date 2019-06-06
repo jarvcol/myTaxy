@@ -6,6 +6,7 @@ import pojo.PostRequestBody;
 public class UpdatePostClient extends BaseClient {
 
     private PostRequestBody postObject;
+    private int postId;
 
     public UpdatePostClient(String baseUri){
         super(baseUri);
@@ -16,10 +17,15 @@ public class UpdatePostClient extends BaseClient {
         this.postObject = postObject;
     }
 
+    public void setPostId(int postId){
+        this.postId = postId;
+    }
+
     @Override
     public void getApiRun(){
         apiClient.setExpectedStatusCode(expectedResponseCode);
         ((UpdateAPostApi)apiClient).setPostRequestBody(postObject);
+        ((UpdateAPostApi)apiClient).setPostId(postId);
         apiClient.perform();
     }
 
