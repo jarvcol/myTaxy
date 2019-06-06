@@ -3,6 +3,7 @@ package test;
 import org.testng.annotations.*;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.testng.asserts.SoftAssert;
 import pojo.PostRequestBody;
 import test.clients.BaseClient;
 import test.clients.CommentsByPostIdClient;
@@ -18,6 +19,7 @@ public class BaseTest {
     public String baseUri;
     protected BaseClient apiClient;
     private String username;
+    protected SoftAssert softAssertions;
 
     public BaseTest(){
     }
