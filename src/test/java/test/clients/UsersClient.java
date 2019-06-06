@@ -18,7 +18,7 @@ public class UsersClient extends BaseClient{
 
     @Override
     public String toString() {
-        return "Client for API: "+((UsersApi) apiClient).toString();
+        return "Client for API: "+apiClient.toString();
     }
 
     public int getUserIdByUserNameFromUserList(String userName){

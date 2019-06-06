@@ -16,7 +16,7 @@ public class BaseTest {
 
     public static final Logger logger = Logger.getLogger(BaseTest.class);
     public String baseUri;
-    private BaseClient apiClient;
+    protected BaseClient apiClient;
     private String username;
 
     public BaseTest(){
@@ -24,7 +24,7 @@ public class BaseTest {
 
     @Parameters({ "baseUri" })
     @BeforeClass(alwaysRun = true)
-    public void beforeMethods(String baseUri) throws Exception{
+    public void beforeMethods(String baseUri){
         PropertyConfigurator.configure("src/test/java/test/resources/log4j.properties");
         logger.info("Properties Initialized for thread "+Thread.currentThread().getId());
 

@@ -3,7 +3,6 @@ package test.clients;
 import myTaxy.apiModels.BaseApi;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import test.utils.JsonUtilities;
 
 public abstract class BaseClient {
 
@@ -41,4 +40,6 @@ public abstract class BaseClient {
     public void setExpectedResponseCode(int expectedResponseCode) {
         this.expectedResponseCode = expectedResponseCode;
     }
+
+    public abstract String toString();
 }
