@@ -2,7 +2,7 @@ package test.testClasses;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Parameters;
-import pojo.AddPostRequestBody;
+import pojo.PostRequestBody;
 import test.BaseTest;
 import org.testng.annotations.Test;
 import org.testng.Assert;
@@ -39,7 +39,7 @@ public class PostsTest extends BaseTest{
     }
 
     /*@Test(dataProvider = "postContent")
-    public void addNewPostTest(AddPostRequestBody postContent, int expectedCodeResults){
+    public void addNewPostTest(PostRequestBody postContent, int expectedCodeResults){
         logger.info("Executing " + "addNewPostTest " + "URI " + baseUri);
         apiClient = new AddNewPostClient(baseUri);
 
