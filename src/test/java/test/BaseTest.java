@@ -6,9 +6,9 @@ import org.apache.log4j.PropertyConfigurator;
 import org.testng.asserts.SoftAssert;
 import pojo.PostRequestBody;
 import test.clients.BaseClient;
-import test.clients.CommentsByPostIdClient;
-import test.clients.PostByUserClient;
-import test.clients.UsersClient;
+import test.clients.comments.CommentsByPostIdClient;
+import test.clients.posts.PostByUserClient;
+import test.clients.users.UsersClient;
 import test.utils.JsonUtilities;
 
 import java.util.*;

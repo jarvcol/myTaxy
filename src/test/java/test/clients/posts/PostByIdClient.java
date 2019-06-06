@@ -1,8 +1,9 @@
-package test.clients;
+package test.clients.posts;
 
 import myTaxy.apiModels.posts.PostByIdApi;
+import test.clients.BaseClient;
 
-public class PostByIdClient extends BaseClient{
+public class PostByIdClient extends BaseClient {
 
     private int postId;
 

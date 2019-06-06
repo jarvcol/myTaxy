@@ -1,7 +1,8 @@
-package test.clients;
+package test.clients.posts;
 
 import myTaxy.apiModels.posts.AddAPostApi;
 import pojo.PostRequestBody;
+import test.clients.BaseClient;
 
 public class AddNewPostClient extends BaseClient {
 

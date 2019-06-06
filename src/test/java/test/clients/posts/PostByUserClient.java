@@ -1,11 +1,12 @@
-package test.clients;
+package test.clients.posts;
 
 import myTaxy.apiModels.posts.PostByUserApi;
+import test.clients.BaseClient;
 import test.utils.JsonUtilities;
 
 import java.util.List;
 
-public class PostByUserClient extends BaseClient{
+public class PostByUserClient extends BaseClient {
 
     private int userId;
 

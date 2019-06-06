@@ -1,6 +1,7 @@
-package test.clients;
+package test.clients.comments;
 
 import myTaxy.apiModels.comments.CommentsByPostApi;
+import test.clients.BaseClient;
 import test.utils.JsonUtilities;
 
 import java.util.List;

@@ -3,7 +3,7 @@ package test.testClasses;
 import org.testng.Assert;
 import org.testng.annotations.*;
 import test.BaseTest;
-import test.clients.CommentsByPostIdClient;
+import test.clients.comments.CommentsByPostIdClient;
 import test.utils.VerificationMethods;
 
 import java.util.HashMap;

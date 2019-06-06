@@ -7,7 +7,10 @@ import pojo.PostRequestBody;
 import test.BaseTest;
 import org.testng.annotations.Test;
 import org.testng.Assert;
-import test.clients.*;
+import test.clients.posts.AddNewPostClient;
+import test.clients.posts.PostByIdClient;
+import test.clients.posts.PostByUserClient;
+import test.clients.posts.UpdatePostClient;
 
 public class PostsTest extends BaseTest{
 
