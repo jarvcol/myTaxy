@@ -7,7 +7,7 @@ import test.clients.users.UsersClient;
 
 public class UsersTest extends BaseUsersTest {
 
-    @Test(dataProvider = "userNames")
+    @Test(dataProvider = "userNames", groups = {"greenTest"})
     public void getUserIdFromUserName(String userName, int expectedId){
         logger.info("Executing " + "getUserIdFromName " + "URI " + baseUri);
         usersClient = new UsersClient(baseUri);

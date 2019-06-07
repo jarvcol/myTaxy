@@ -16,7 +16,7 @@ public class PostsTest extends BasePostsTest {
         super.setUsername(userName);
     }
 
-    @Test(dataProvider = "usersId")
+    @Test(dataProvider = "usersId", groups = {"greenTest"})
     public void getPostByUsersId(String userName, int userId, int expectedPostAmount){
         logger.info("Executing " + "getPostByUsersId " + "URI " + baseUri);
         postClient = new PostByUserClient(baseUri);
@@ -35,7 +35,7 @@ public class PostsTest extends BasePostsTest {
         Assert.assertEquals(postAmount, expectedPostAmount, "Amount of post found is not the expected");
     }
 
-    @Test(dataProvider = "postToUpdate")
+    @Test(dataProvider = "postToUpdate", groups = {"redTest"})
     public void updatePostTest(PostRequestBody postContent, int expectedCodeResults){
         logger.info("Executing " + "updatePostTest " + "URI " + baseUri);
         postClient = new UpdatePostClient(baseUri);
@@ -69,7 +69,7 @@ public class PostsTest extends BasePostsTest {
         softAssertions.assertAll();
     }
 
-    @Test(dataProvider = "postContent")
+    @Test(dataProvider = "postContent", groups = {"redTest"})
     public void addNewPostTest(PostRequestBody postContent, int expectedCodeResults){
         logger.info("Executing " + "addNewPostTest " + "URI " + baseUri);
         postClient = new AddNewPostClient(baseUri);
