@@ -36,7 +36,6 @@ public class BasePostsTest extends BaseTest {
                 {new PostRequestBody("","This is the test body 2", 1),400},
                 {new PostRequestBody("TestPost3","", 1),400},
                 {new PostRequestBody("TestPost4","This is the test body 4", -1),400},
-                {new PostRequestBody("TestPost5","Select * From table Where 1=1", 1),400},
                 {new PostRequestBody("TestPost1","This is the test body 1", 1),400},
         };
     }
@@ -46,6 +45,10 @@ public class BasePostsTest extends BaseTest {
         //Read File, DB, etc
         return new Object[][]{
                 {new PostRequestBody("TestPost1","This is the test body 1", 1, 1),200},
+                {new PostRequestBody("","This is the test body 2", 1, 1),400},
+                {new PostRequestBody("TestPost3","", 1, 1),400},
+                {new PostRequestBody("TestPost4","This is the test body 4", -1, 1),400},
+                {new PostRequestBody("TestPost4","This is the test body 4", 1, -1),400}
         };
     }
 }
