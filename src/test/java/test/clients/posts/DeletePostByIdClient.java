@@ -1,19 +1,19 @@
 package test.clients.posts;
 
+import myTaxy.apiModels.posts.DeletePostApi;
 import myTaxy.apiModels.posts.UpdateAPostApi;
 
-public class UpdatePostClient extends BasePostClient {
+public class DeletePostByIdClient extends BasePostClient {
 
-    public UpdatePostClient(String baseUri){
+    public DeletePostByIdClient(String baseUri){
         super(baseUri);
-        apiClient = new UpdateAPostApi(baseUri);
+        apiClient = new DeletePostApi(baseUri);
     }
 
     @Override
     public void getApiRun(){
         apiClient.setExpectedStatusCode(expectedResponseCode);
-        ((UpdateAPostApi)apiClient).setPostRequestBody(postObject);
-        ((UpdateAPostApi)apiClient).setPostId(postId);
+        ((DeletePostApi)apiClient).setPostId(postId);
         apiClient.perform();
     }
 

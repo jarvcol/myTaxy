@@ -51,4 +51,13 @@ public class BasePostsTest extends BaseTest {
                 {new PostRequestBody("TestPost4","This is the test body 4", 1, -1),400}
         };
     }
+
+    @DataProvider(name="postToDelete")
+    public Object[][] postToDelete(){
+        //Read File, DB, etc
+        return new Object[][]{
+                {1, 200, 404},
+                {101, 404, 404},
+        };
+    }
 }

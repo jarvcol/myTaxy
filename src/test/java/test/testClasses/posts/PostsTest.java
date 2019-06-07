@@ -94,4 +94,26 @@ public class PostsTest extends BasePostsTest {
         Assert.assertTrue(((PostByIdClient)postClient).checkPostUserId(postContent.getUserId()), "Post was supposed to be done but not found");
 
     }
+
+    @Test(dataProvider = "postToDelete", groups = {"redTest"})
+    public void deletePostTest(int postId, int expectedCodeDelete, int expectedCodeSearch){
+        logger.info("Executing " + "deletePostTest " + "URI " + baseUri);
+        postClient = new DeletePostByIdClient(baseUri);
+
+        postClient.setExpectedResponseCode(expectedCodeDelete);
+        postClient.setPostId(postId);
+        postClient.getApiRun();
+
+        logger.info("Response Code " + postClient.getResponseStatusCode());
+        logger.info("Client class " +postClient.toString());
+
+        postClient = new PostByIdClient(baseUri);
+        postClient.setExpectedResponseCode(expectedCodeSearch);
+        postClient.setPostId(postId);
+        postClient.getApiRun();
+
+        logger.info("Response Code " + postClient.getResponseStatusCode());
+        logger.info("Client class " +postClient.toString());
+    }
+
 }

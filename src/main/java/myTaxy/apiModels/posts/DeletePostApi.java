@@ -1,18 +1,16 @@
 package myTaxy.apiModels.posts;
 
 import myTaxy.apiModels.BaseApi;
-import pojo.PostRequestBody;
 
 import static io.restassured.RestAssured.given;
 
-public class UpdateAPostApi extends BaseApi {
+public class DeletePostApi extends BaseApi {
 
     private final String resource="/posts/{postId}";
-    private final String type="put";
-    private PostRequestBody postRequestBody;
+    private final String type="delete";
     private int postId;
 
-    public UpdateAPostApi(String baseUri) {
+    public DeletePostApi(String baseUri) {
         super(baseUri);
     }
 
@@ -20,23 +18,17 @@ public class UpdateAPostApi extends BaseApi {
         this.postId = postId;
     }
 
-    public void setPostRequestBody(PostRequestBody postRequestBody){
-        this.postRequestBody = postRequestBody;
-    }
-
     @Override
     public void createBasicRequest() {
         super.setBaseUri(baseUri);
         super.setBasePath(resource);
-        super.setRequestContentType("application/json");
         super.setPathParameter("postId", postId);
-        super.setPostRequestBody(postRequestBody);
         super.createRequest();
     }
 
     @Override
     public void executeRequest() {
-        apiResponse = given().spec(requestSpecification).put();
+        apiResponse = given().spec(requestSpecification).delete();
     }
 
     @Override
@@ -48,10 +40,11 @@ public class UpdateAPostApi extends BaseApi {
 
     @Override
     public String toString() {
-        return "UpdateAPostApi{" +
+        return "DeletePostApi{" +
                 "type=" + type + '\'' +
                 "resource='" + resource + '\'' +
                 "at="+ baseUri +'\'' +
                 '}';
     }
+
 }
