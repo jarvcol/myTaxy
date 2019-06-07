@@ -25,3 +25,6 @@ Frameworks supports components like:
 <li>EmailValidation: Just a class to perform the email validation.
 </ul>
 
+<h2> CI </h2>
+https://circleci.com/gh/jarvcol/myTaxy
+Project has some test on green (passed) and some on red (failed). Those red are related to failed test against the test site. Report on failures could be improved but had no more time (further improvement).
