@@ -7,17 +7,23 @@
 
     <parameter name="baseUri"  value="http://jsonplaceholder.typicode.com/"/>
 
-    <test name="baseUserTest">
+    <test name="userTest">
         <classes>
-            <class name="test.testClasses.UsersTest"></class>
+            <class name="test.testClasses.users.UsersTest"></class>
         </classes>
     </test>
 
-    <test name="nameDependantTest">
+    <test name="postTest">
         <parameter name="userName"  value="Samantha"/>
         <classes>
-            <class name="test.testClasses.PostsTest"></class>
-            <class name="test.testClasses.CommentsTest"></class>
+            <class name="test.testClasses.posts.PostsTest"></class>
+        </classes>
+    </test>
+
+    <test name="commentsTest">
+        <parameter name="userName"  value="Samantha"/>
+        <classes>
+            <class name="test.testClasses.comments.CommentsTest"></class>
         </classes>
     </test>
 </suite>

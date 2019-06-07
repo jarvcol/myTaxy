@@ -1,6 +1,7 @@
-package test.clients;
+package test.clients.comments;
 
 import myTaxy.apiModels.comments.CommentsByPostApi;
+import test.clients.BaseClient;
 import test.utils.JsonUtilities;
 
 import java.util.List;
@@ -32,5 +33,9 @@ public class CommentsByPostIdClient extends BaseClient {
 
     public List<Integer> getListOfCommentsId(){
         return JsonUtilities.getListOfIntegerValuesFromList("id", this.getApiResponseAsJsonArray());
+    }
+
+    public int getCommentsAmount(){
+        return this.getApiResponseAsJsonArray().length();
     }
 }

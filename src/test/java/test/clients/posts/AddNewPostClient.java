@@ -1,19 +1,14 @@
-package test.clients;
+package test.clients.posts;
 
 import myTaxy.apiModels.posts.AddAPostApi;
 import pojo.PostRequestBody;
+import test.clients.BaseClient;
 
-public class AddNewPostClient extends BaseClient {
-
-    private PostRequestBody postObject;
+public class AddNewPostClient extends BasePostClient {
 
     public AddNewPostClient(String baseUri){
         super(baseUri);
         apiClient = new AddAPostApi(baseUri);
-    }
-
-    public void setPostObject(PostRequestBody postObject){
-        this.postObject = postObject;
     }
 
     @Override
@@ -26,9 +21,5 @@ public class AddNewPostClient extends BaseClient {
     @Override
     public String toString() {
         return "Client for API: "+apiClient.toString();
-    }
-
-    public int getNewPostId(){
-        return getApiResponseAsJsonObject().getInt("userId");
     }
 }

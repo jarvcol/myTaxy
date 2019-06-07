@@ -3,7 +3,7 @@ package test.utils;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 
-public class VerificationMethods {
+public class EmailValidator {
 
     public static boolean checkEmailFormat(String email){
         try {

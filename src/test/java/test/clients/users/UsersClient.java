@@ -1,9 +1,10 @@
-package test.clients;
+package test.clients.users;
 
 import myTaxy.apiModels.users.UsersApi;
+import test.clients.BaseClient;
 import test.utils.JsonUtilities;
 
-public class UsersClient extends BaseClient{
+public class UsersClient extends BaseClient {
 
     public UsersClient(String baseUri){
         super(baseUri);

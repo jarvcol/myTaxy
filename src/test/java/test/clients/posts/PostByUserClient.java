@@ -1,21 +1,16 @@
-package test.clients;
+package test.clients.posts;
 
 import myTaxy.apiModels.posts.PostByUserApi;
+import test.clients.BaseClient;
 import test.utils.JsonUtilities;
 
 import java.util.List;
 
-public class PostByUserClient extends BaseClient{
-
-    private int userId;
+public class PostByUserClient extends BasePostClient {
 
     public PostByUserClient(String baseUri){
         super(baseUri);
         apiClient = new PostByUserApi(baseUri);
-    }
-
-    public void setUserId(int userId){
-        this.userId = userId;
     }
 
     @Override
