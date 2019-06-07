@@ -26,7 +26,7 @@ public class BaseTest {
         logger.info("Based URI = " + baseUri);
     }
 
-    @AfterClass
+    @AfterClass(alwaysRun = true)
     public void afterMethod() {
         //TODO
         //Erase all created and/or rollback any changed data

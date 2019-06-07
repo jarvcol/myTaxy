@@ -15,6 +15,12 @@
 
     <test name="postTest">
         <parameter name="userName"  value="Samantha"/>
+        <groups>
+            <run>
+                <include name="greenTest"/>
+                <exclude name="redTest"/>
+            </run>
+        </groups>
         <classes>
             <class name="test.testClasses.posts.PostsTest"></class>
         </classes>
